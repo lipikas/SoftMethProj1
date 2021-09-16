@@ -1,6 +1,7 @@
 package library;
 
 import java.util.Calendar;
+import java.util.StringTokenizer;
 
 /**
  * Date class contains year, month, and day.
@@ -10,52 +11,88 @@ public class Date implements Comparable<Date> {
    private int year;
    private int month;
    private int day;
+   public static final int QUADRENNIAL = 4;
+   public static final int CENTENNIAL = 100;
+   public static final int QUATERCENTENNIAL = 400;
+   public static final int THE_EIGHTYS = 1980;
+   public static final int JAN = 1;
+   public static final int DEC = 12;
+   public static final int FEB = 2;
+   public static final int FEB_LEAP_DAYS = 29;
+   public static final int FEB_NONLEAP_DAYS = 28;
 
+   /**
+    * Created Date obj for Current Date
+    */
    public Date(){
-      Date date = new Date(Calendar.getInstance().toString());
+      this.day = Calendar.getInstance().get(Calendar.DATE);
+      this.year = Calendar.getInstance().get(Calendar.YEAR);
+      this.month = Calendar.getInstance().get(Calendar.MONTH) + 1;
    }
+
    /**
     * Method takes “mm/dd/yyyy” and creates a Date object.
     * @param date
     * @return Date obj
     */
-   public Date(String date) {}
+   public Date(String date) {
+      StringTokenizer list = new StringTokenizer(date, "/");
+      int dateList [] = new int[3];
+      int i = 0;
+      while(i < dateList.length){
+         dateList[i] = Integer.parseInt(list.nextToken());
+         i++;
+      }
+      this.year = dateList[2];
+      this.day = dateList[1];
+      this.month = dateList[0];
+   }
 
    /**
-    * Creates an object with today’s date (see Calendar class)
+    * Checks if date is valid or not
+    * @return true if date is valid or else returns false.
     */
-   public Date() {
-
-   }
    public boolean isValid() {
-   return false;
+      if (this.year >= THE_EIGHTYS && (this.month >= JAN && this.month <= DEC)){ // valid date
+         if (isLeapYear(this.year)){ // leap year
+            if (month != FEB && day == (30 + month % 2)) return true;
+            if (month == FEB && day == FEB_LEAP_DAYS) return true;
+         }
+         else {// not leap year
+            if(month != FEB && day == ( 30 + month % 2)) return true;
+            if (month == FEB && day == FEB_NONLEAP_DAYS) return true;
+         }
+      }
+      return false; // not valid date
+   }
+
+   /**
+    * Checks if year is Leap year.
+    * @param year
+    * @return true if leap year else false
+    */
+   private boolean isLeapYear(int year){
+      if (year % QUADRENNIAL == 0){
+         if (year % CENTENNIAL == 0){
+            if (year % QUATERCENTENNIAL == 0) return true;
+         }
+         else return true;
+      }
+      return false;
    }
 
    @Override
    public int compareTo(Date date) {
+      // need the method to sort by release Date
+      // case - duplicates albums in collection
+      if (this.year >= date.year){
+         if (this.day >= date.day){
+            if (this.month >= month )
+         }
+      }
+      else if (this.year < date.year){
+
+      }
       return 0;
    }
-   //cannot use System.out statements
-//implement constructors and methods
-//override Java compareTo - use for sorting by release dates
-//isValid()
-   //Design testcases for this method with a testbed main - check "SD ground rules" in project doc
-   //invalid
-   //year less than 1980
-   //date beyond todays
-   //Jan, March, May, July, Aug, Oct, Dec - 31 days
-   //April, June, Sept, Nov - 30 days
-   //Feb - 28 days (non-leap year) & 29 days (leap year)
-   //**DO NOT** use *magic numbers
-   //Defining identifiers:
-   public static final int QUADRENNIAL = 4;
-   public static final int CENTENNIAL = 100;
-   public static final int QUATERCENTENNIAL = 400;
-   public static final int THE_EIGHTYS = 1980;
-//Defining a **leap year:
-//Step 1. If the year is evenly divisible by 4, go to step 2. Otherwise, go to step 5.
-//Step 2. If the year is evenly divisible by 100, go to step 3. Otherwise, go to step 4.
-//Step 3. If the year is evenly divisible by 400, go to step 4. Otherwise, go to step 5.
-//Step 4. The year is a leap year.
-//Step 5. The year is not a leap year.***
 }
