@@ -85,14 +85,7 @@ public class Date implements Comparable<Date> {
    public int compareTo(Date date) {
       // need the method to sort by release Date
       // case - duplicates albums in collection
-      if (this.year >= date.year){
-         if (this.day >= date.day){
-            if (this.month >= month )
-         }
-      }
-      else if (this.year < date.year){
 
-      }
       return 0;
    }
 }
