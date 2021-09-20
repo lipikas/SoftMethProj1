@@ -27,17 +27,6 @@ public class Album {
     }
 
     /**
-     * Album constructor creates Album obj.
-     * @param album
-     */
-    public Album(Album album) {
-        this.title = album.title;
-        this.artist = album.artist;
-        this.genre = album.genre;
-        this.releaseDate = album.releaseDate;
-    }
-
-    /**
      * Method checks if title and artist are same for two albums.
      *
      * @param obj is Album object.
