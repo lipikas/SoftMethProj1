@@ -12,7 +12,14 @@ public class Collection {
         }
         return -1;
     }
-//    private void grow() {} //increase the capacity of the array list by 4
+    //increase the capacity of the array list by 4
+    private void grow() {
+        Album[] longerAlbums = new Album[numAlbums + 4];
+        for(int i = 0; i < numAlbums; i++){
+            longerAlbums[i] = new Album(albums[i]);
+        }
+
+    }
 //    public boolean add(Album album) {}
 //    public boolean remove(Album album) {}//maintains same order of albums after deletion
 //    public boolean lendingOut(Album album) {} //set to not available
@@ -24,8 +31,8 @@ public class Collection {
     /**
      * Testbed main for Collections class
      */
-    public static void main(String[] args){
-        Collection collection = new Collection();
-        collection.albums = {}
-    }
+//    public static void main(String[] args){
+//        Collection collection = new Collection();
+//        collection.albums = {}
+//    }
 }
