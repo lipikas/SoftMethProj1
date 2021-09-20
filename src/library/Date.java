@@ -34,9 +34,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Method takes “mm/dd/yyyy” and creates a Date object.
-     *
-     * @param date
-     * @return Date obj
+     * @param date - Refers to release date of Album.
      */
     public Date(String date) {
         StringTokenizer list = new StringTokenizer(date, "/");
@@ -53,7 +51,6 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks if date is valid or not
-     *
      * @return true if date is valid or else returns false.
      */
     public boolean isValid() {
@@ -72,8 +69,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks if year is Leap year.
-     *
-     * @param year
+     * @param year - Refers to year Album was released.
      * @return true if leap year else false
      */
     private boolean isLeapYear(int year) {
@@ -87,7 +83,6 @@ public class Date implements Comparable<Date> {
 
     /**
      * Compares dates if one date is >= or < the other date
-     *
      * @param date - Date inputted by user.
      * @return 1 if date1 > date 2, 0 if date 1 = date 2 and -1 if date 1 < date 2
      */
@@ -109,5 +104,13 @@ public class Date implements Comparable<Date> {
 
     public void printDate() {
         System.out.println(this.month + "/" + this.day + "/" + this.year);
+    }
+
+    /**
+     * Testbed main for Date class.
+     * @param args
+     */
+    public static void main(String[] args) {
+
     }
 }

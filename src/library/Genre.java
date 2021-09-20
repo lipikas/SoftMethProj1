@@ -6,7 +6,6 @@ public class Genre {
 
     /**
      * Constructor sets genre.
-     *
      * @param genre - GenreName.
      */
     public Genre(String genre) {
@@ -23,7 +22,6 @@ public class Genre {
 
     /**
      * Gets Genre Name
-     *
      * @return genreName
      */
     public String getGenreName() {
