@@ -88,4 +88,8 @@ public class Date implements Comparable<Date> {
 
       return 0;
    }
+
+   public void printDate(){
+      System.out.print(this.month + "/" + this.day + "/" + this.year);
+   }
 }

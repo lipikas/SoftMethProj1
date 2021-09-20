@@ -49,4 +49,22 @@ public class Album {
       return this.title + colon + this.artist + colon + this.genre.getGenreName() + colon + this.releaseDate + ".";
    }
 
+   public boolean getAvailability(){
+      return this.isAvailable;
+   }
+
+   public void setNotAvailable(){
+      this.isAvailable = false;
+   }
+
+   public void setAvailable(){
+      this.isAvailable = true;
+   }
+
+   public void printDetails(){
+      System.out.println(this.title + "::" + this.artist + "::" + this.genre + "::");
+      this.releaseDate.printDate();
+      if(this.getAvailability()) System.out.print("::" + "is available");
+      else System.out.print("::" + "is not available");
+   }
 }
