@@ -45,8 +45,7 @@ public class Album {
     */
    @Override
    public String toString() {
-      String colon = "::";
-      return this.title + colon + this.artist + colon + this.genre.getGenreName() + colon + this.releaseDate + ".";
+      return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate + ".";
    }
 
    public boolean getAvailability(){
@@ -62,6 +61,9 @@ public class Album {
    }
 
    public void printDetails(){
+//      Date date = new Date ("5/1/2000");
+//      System.out.println("CompareTo date: " + this.releaseDate.compareTo(date));
+//      System.out.println("Isvalid date: " +  this.releaseDate.isValid());
       System.out.println(this.title + "::" + this.artist + "::" + this.genre + "::");
       this.releaseDate.printDate();
       if(this.getAvailability()) System.out.print("::" + "is available");

@@ -53,14 +53,15 @@ public class Date implements Comparable<Date> {
     * @return true if date is valid or else returns false.
     */
    public boolean isValid() {
-      if (this.year >= THE_EIGHTYS && (this.month >= JAN && this.month <= DEC)){ // valid date
+      if (this.year >= THE_EIGHTYS && (this.month >= JAN && this.month <= DEC) && this.day > 0){ // valid date
+         System.out.println("isleap year: " + isLeapYear(this.year));
          if (isLeapYear(this.year)){ // leap year
-            if (month != FEB && day == (30 + month % 2)) return true;
+            if (month != FEB && day <= (30 + month % 2)) return true;
             if (month == FEB && day == FEB_LEAP_DAYS) return true;
          }
          else {// not leap year
-            if(month != FEB && day == ( 30 + month % 2)) return true;
-            if (month == FEB && day == FEB_NONLEAP_DAYS) return true;
+            if(month != FEB && day <= ( 30 + month % 2)) return true;
+            if (month == FEB && day <= FEB_NONLEAP_DAYS) return true;
          }
       }
       return false; // not valid date
@@ -81,15 +82,28 @@ public class Date implements Comparable<Date> {
       return false;
    }
 
+   /**
+    * Compares dates if one date is >= or < the other date
+    * @param date - Date inputted by user.
+    * @return 1 if date1 > date 2, 0 if date 1 = date 2 and -1 if date 1 < date 2
+    */
    @Override
    public int compareTo(Date date) {
-      // need the method to sort by release Date
-      // case - duplicates albums in collection
+      if (this.year > date.year) return 1; // year is greater
+      else if (this.year < date.year) return -1; // year is lesser
 
-      return 0;
+      // year matches
+      if (this.month > date.month) return 1;
+      else if (this.month < date.month) return -1;
+
+      // month matches
+      if (this.day > date.day) return 1;
+      else if (this.day < date.day) return -1;
+
+      return 0; // year matches - case
    }
 
    public void printDate(){
-      System.out.print(this.month + "/" + this.day + "/" + this.year);
+      System.out.println(this.month + "/" + this.day + "/" + this.year);
    }
 }
