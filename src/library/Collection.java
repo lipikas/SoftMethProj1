@@ -6,8 +6,8 @@ public class Collection {
 
     //returns album index, or return -1
     private int find(Album album) {
-        for(int i = 0; i < numAlbums; i++){
-            if(albums[i].equals(album)){
+        for (int i = 0; i < numAlbums; i++) {
+            if (albums[i].equals(album)) {
                 return i;
             }
         }
@@ -17,7 +17,7 @@ public class Collection {
     //increase the capacity of the array list by 4
     private void grow() {
         Album[] longerAlbums = new Album[numAlbums + 4];
-        for(int i = 0; i < numAlbums; i++){
+        for (int i = 0; i < numAlbums; i++) {
             longerAlbums[i] = albums[i];
         }
         albums = longerAlbums;
@@ -25,12 +25,12 @@ public class Collection {
 
     //adds an album to the end of the collection
     public boolean add(Album album) {
-        for(int i = 0; i < numAlbums; i++){
-            if(albums[i].equals(album) == true){ //checking if album already exists in collection
+        for (int i = 0; i < numAlbums; i++) {
+            if (albums[i].equals(album) == true) { //checking if album already exists in collection
                 return false;
             }
         }
-        if(numAlbums == albums.length){ //if collection is of max size
+        if (numAlbums == albums.length) { //if collection is of max size
             grow(); //increase size
         }
         albums[numAlbums] = album; //adding album to last position
@@ -39,9 +39,9 @@ public class Collection {
 
     //maintains same order of albums after deletion
     public boolean remove(Album album) {
-        for(int i = 0; i < numAlbums; i++){
-            if(albums[i].equals(album) == true){ //checking if album exists in collection
-                for(int j = i; j < numAlbums - 1; j++){
+        for (int i = 0; i < numAlbums; i++) {
+            if (albums[i].equals(album) == true) { //checking if album exists in collection
+                for (int j = i; j < numAlbums - 1; j++) {
                     albums[i] = albums[i + 1];
                 }
                 return true;
@@ -52,8 +52,8 @@ public class Collection {
 
     //set to not available
     public boolean lendingOut(Album album) {
-        for(int i = 0; i < numAlbums; i++){
-            if(albums[i].equals(album) == true){ //checking if album exists in collection
+        for (int i = 0; i < numAlbums; i++) {
+            if (albums[i].equals(album) == true) { //checking if album exists in collection
                 albums[i].setNotAvailable();
                 return true;
             }
@@ -63,9 +63,9 @@ public class Collection {
 
     //set to available
     public boolean returnAlbum(Album album) {
-        for(int i = 0; i < numAlbums; i++){
-            if(albums[i].equals(album) == true){ //checking if album exists in collection
-                if(albums[i].getAvailability() == true){ //checking if album has indeed been lent out
+        for (int i = 0; i < numAlbums; i++) {
+            if (albums[i].equals(album) == true) { //checking if album exists in collection
+                if (albums[i].getAvailability() == true) { //checking if album has indeed been lent out
                     return false;
                 }
                 albums[i].setAvailable();
@@ -74,11 +74,13 @@ public class Collection {
         }
         return false; //album does not exist in collection
     }
+
     //display the list without specifying the order
     public void print() {
         //TODO: Check if numAlbums > 0 in driver method
-        for(int i = 0; i < numAlbums; i++){
-            albums[i].printDetails();;
+        for (int i = 0; i < numAlbums; i++) {
+            albums[i].printDetails();
+            ;
         }
     }
 //    public void printByReleaseDate() {}
