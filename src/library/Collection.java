@@ -4,6 +4,12 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
+    //default constructor
+    public Collection(){
+        this.albums = new Album[4];
+        this.numAlbums = 0;
+    }
+
     //returns album index, or return -1
     private int find(Album album) {
         for (int i = 0; i < numAlbums; i++) {
