@@ -24,6 +24,7 @@ public class Album {
         this.artist = artist;
         this.genre = new Genre(genre);
         this.releaseDate = new Date(releaseDate);
+        this.isAvailable = true;
     }
 
     /**
@@ -58,13 +59,13 @@ public class Album {
 
     public void setAvailable() { this.isAvailable = true; }
 
-    public void printDetails() {
-//      Date date = new Date ("5/1/2000");
-//      System.out.println("CompareTo date: " + this.releaseDate.compareTo(date));
-//      System.out.println("Isvalid date: " +  this.releaseDate.isValid());
-        System.out.println(this.title + "::" + this.artist + "::" + this.genre + "::");
+    public void printAlbum() {
+        System.out.print(this.title + "::" + this.artist + "::");
+        this.genre.printGenre();
+        System.out.print("::");
         this.releaseDate.printDate();
         if (this.getAvailability()) System.out.print("::" + "is available");
         else System.out.print("::" + "is not available");
+        System.out.println("");
     }
 }

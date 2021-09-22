@@ -28,4 +28,7 @@ public class Genre {
         return this.genreName;
     }
 
+    public void printGenre(){
+        System.out.print(this.genreName);
+    }
 }

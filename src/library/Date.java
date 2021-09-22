@@ -103,7 +103,7 @@ public class Date implements Comparable<Date> {
     }
 
     public void printDate() {
-        System.out.println(this.month + "/" + this.day + "/" + this.year);
+        System.out.print(this.month + "/" + this.day + "/" + this.year);
     }
 
     /**
