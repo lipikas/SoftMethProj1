@@ -1,7 +1,7 @@
 package library;
 
 /**
- * This is an Album class that contains title, artist, genre, release Date & isAvailable.
+ * Creates Album object and has respective album methods.
  *
  * @author Lipika
  */
@@ -14,10 +14,11 @@ public class Album {
 
     /**
      * Album constructor creates Album obj.
-     * @param title - Refers to the Album title.
-     * @param artist
-     * @param genre - Refers to Album genre.
-     * @param releaseDate - Refers to Album release Date.
+     *
+     * @param title       Refers to the Album title.
+     * @param artist      Refers to artist name.
+     * @param genre       Refers to Album genre.
+     * @param releaseDate Refers to Album release Date.
      */
     public Album(String title, String artist, String genre, String releaseDate) {
         this.title = title;
@@ -28,10 +29,21 @@ public class Album {
     }
 
     /**
+     * Creates Album object only for title and artist
+     *
+     * @param title  Refers to the Album title.
+     * @param artist Refers to artist name.
+     */
+    public Album(String title, String artist) {
+        this.title = title;
+        this.artist = artist;
+    }
+
+    /**
      * Method checks if title and artist are same for two albums.
      *
      * @param obj is Album object.
-     * @return true if title and artist are title and artist are same for two albums or else false.
+     * @return true if title and artist are same for two albums or else return false.
      */
     @Override
     public boolean equals(Object obj) {
@@ -50,22 +62,34 @@ public class Album {
      */
     @Override
     public String toString() {
-        return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate + ".";
+        String availability = "";
+        if (this.getAvailability()) availability = "is available";
+        else availability = "is not available";
+        return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate.getDate() + "::" + availability;
     }
 
-    public boolean getAvailability() { return this.isAvailable; }
-
-    public void setNotAvailable() { this.isAvailable = false; }
-
-    public void setAvailable() { this.isAvailable = true; }
-
-    public void printAlbum() {
-        System.out.print(this.title + "::" + this.artist + "::");
-        this.genre.printGenre();
-        System.out.print("::");
-        this.releaseDate.printDate();
-        if (this.getAvailability()) System.out.print("::" + "is available");
-        else System.out.print("::" + "is not available");
-        System.out.println("");
+    /**
+     * Gets availability of Albums.
+     *
+     * @return true if availability is true otherwise return false.
+     */
+    public boolean getAvailability() {
+        return this.isAvailable;
     }
+
+    /**
+     * Sets availability of album to true or false
+     */
+    public void setAvailability(boolean availability) {
+        this.isAvailable = availability;
+    }
+
+    public int compareDate(Album album){
+        return this.releaseDate.compareTo(album.releaseDate);
+    }
+
+    public int compareGenre(Album album){
+        return this.genre.getGenreName().compareTo(album.genre.getGenreName());
+    }
+
 }
