@@ -8,7 +8,7 @@ import java.util.StringTokenizer;
  *
  * @author Lipika
  */
-
+//TODO: there needs to be a newline after the user entered commands and what we print
 public class CollectionManager {
 
     public static final int ADD_MAX_COUNT = 4;
@@ -45,7 +45,7 @@ public class CollectionManager {
      * Given input, calls respective methods and checks for invalid commands.
      *
      * @param input is args[0] in the input given by user.
-     * @return 1 if quit is called, -1 if Collection is empty or Invalid command occurs. Otherwise returns 0.
+     * @return 1 if quit is called, -1 if Collection is empty or Invalid command occurs.
      */
     private int commandCheck(String input, Collection list) {
         if (input.compareTo("Q") == 0) { // quit command
@@ -54,20 +54,13 @@ public class CollectionManager {
         } else if (input.compareTo("P") == 0) { // print
             return checkPrint(input, list);
         } else if (input.compareTo("PD") == 0) { // print by date
-            if (list.getAlbumNumber() > 0) {
-                System.out.println("*Album collection by the release dates.");
-                System.out.println("*End of list");
-            } else {
-                System.out.println("The collection is empty!");
-                return -1;
-            }
+            return checkPrintByDate(input, list);
         } else if (input.compareTo("PG") == 0) { // print by genre
-            return checkPrintGenre(input, list);
+            return checkPrintByGenre(input, list);
         } else {
             System.out.println("Invalid command! 1");
             return -1; // continue
         }
-        return 0;
     }
 
     /**
@@ -75,7 +68,6 @@ public class CollectionManager {
      *
      * @param method Refers to method name.
      * @param token  Input stream.
-     * @return true if invalid command or else return false
      */
     private void inputVerification(String method, StringTokenizer token, Collection list) {
         if (method.compareTo("A") == 0 && token.countTokens() == ADD_MAX_COUNT) { // add album
@@ -223,6 +215,7 @@ public class CollectionManager {
      * @return -1 if empty collection, return 0 otherwise
      */
     private int checkPrint(String input, Collection list) {
+        //TODO: never actually using "input" param here, do you need it?
         if (list.getAlbumNumber() > 0) {
             System.out.println("*List of albums in the collection.");
             list.print();
@@ -241,9 +234,31 @@ public class CollectionManager {
      * @param list  is input given by user
      * @return -1 if empty collection, return 0 otherwise
      */
-    private int checkPrintGenre(String input, Collection list) {
+    private int checkPrintByGenre(String input, Collection list) {
+        //TODO: never actually using "input" param here, do you need it?
+        if (list.getAlbumNumber() > 0) {
+            System.out.println("*Album collection by genre.");
+            list.printByGenre();
+            System.out.println("*End of list");
+        } else {
+            System.out.println("The collection is empty!");
+            return -1;
+        }
+        return 0;
+    }
+
+    /**
+     * Checks if collection isn't empty and prints albums by release date.
+     *
+     * @param input is input given by user
+     * @param list  is input given by user
+     * @return -1 if empty collection, return 0 otherwise
+     */
+    private int checkPrintByDate(String input, Collection list) {
+        //TODO: never actually using "input" param here, do you need it?
         if (list.getAlbumNumber() > 0) {
             System.out.println("*Album collection by the release dates.");
+            list.printByReleaseDate();
             System.out.println("*End of list");
         } else {
             System.out.println("The collection is empty!");

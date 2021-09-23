@@ -4,13 +4,21 @@ public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
 
-    //default constructor
+    /**
+     * Collection default constructor creates Collection object.
+     */
     public Collection(){
         this.albums = new Album[4];
         this.numAlbums = 0;
     }
 
     //returns album index, or return -1
+    /**
+     * Searches for an Album in a Collection
+     *
+     * @param album is the album we are looking for
+     * @return index of the album if found or else returns -1
+     */
     private int find(Album album) {
         for (int i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album)) {
@@ -20,7 +28,9 @@ public class Collection {
         return -1;
     }
 
-    //increase the capacity of the array list by 4
+    /**
+     * Increases the capacity of the Albums array by 4
+     */
     private void grow() {
         Album[] longerAlbums = new Album[numAlbums + 4];
 //        for (int i = 0; i < numAlbums; i++) {
@@ -30,9 +40,13 @@ public class Collection {
         albums = longerAlbums;
     }
 
-    //adds an album to the end of the collection
+    /**
+     * Adds an Album to the end of the Collection.
+     *
+     * @param album is Album we want to add.
+     * @return true if Album is successfully added or false if the Album already exists in the Collection
+     */
     public boolean add(Album album) {
-
         int index = find(album);
         if(index != -1) return false; //album already exists in collection
 
@@ -44,7 +58,12 @@ public class Collection {
         return true;
     }
 
-    //maintains same order of albums after deletion
+    /**
+     * Removes an Album from a Collection and maintains the same order.
+     *
+     * @param album is Album we want to remove.
+     * @return true if Album is successfully removed or false if Album does not exist in Collection
+     */
     public boolean remove(Album album) {
         int index = find(album);
         if(index == -1) return false; //album does not exist in collection
@@ -55,7 +74,12 @@ public class Collection {
         return true;
     }
 
-    //set to not available
+    /**
+     * Sets an Album to not available when lent out.
+     *
+     * @param album is Album we want to lend out.
+     * @return true if Album is successfully lent out or false is album does not exist or is already unavailable
+     */
     public boolean lendingOut(Album album) {
         int index = find(album);
         if(index == -1) return false; //album does not exist in collection
@@ -65,6 +89,12 @@ public class Collection {
     }
 
     //set to available
+    /**
+     * Sets an Album to available when returned.
+     *
+     * @param album is Album that is returned.
+     * @return true if Album is successfully returned or false is album does not exist or is already available
+     */
     public boolean returnAlbum(Album album) {
         int index = find(album);
         if(index == -1) return false; //album does not exist in collection
@@ -73,7 +103,9 @@ public class Collection {
         return true;
     }
 
-    //display the list without specifying the order
+    /**
+     * Print the Albums in no specific order.
+     */
     public void print() {
         //TODO: Check if numAlbums > 0 in driver method
         for (int i = 0; i < numAlbums; i++) {
@@ -81,29 +113,46 @@ public class Collection {
         }
     }
 
+    /**
+     * Print the Albums in order of Release Date.
+     */
     public void printByReleaseDate() {
         sortAlbumArray(0, numAlbums - 1, "date");
         print();
     }
 
+    /**
+     * Print the Albums in order of Genre.
+     */
     public void printByGenre() {
         sortAlbumArray(0, numAlbums - 1, "genre");
         print();
     }
 
+    /**
+     * Recursive method that sorts Album array in ascending order by Genre or Release Date using Merge Sort
+     *
+     * @param leftInd is the left index of the array
+     * @param rightInd is the right index of the array
+     * @param sortBy to sort either by "genre" or by "date"
+     */
     public void sortAlbumArray(int leftInd, int rightInd, String sortBy) {
         if (leftInd < rightInd) {
             int mid = (leftInd+rightInd)/2;
-
-            // Sort first and second halves
-            sortAlbumArray(leftInd, mid, sortBy);
+            sortAlbumArray(leftInd, mid, sortBy); // Sort the first and second halves of the array
             sortAlbumArray(mid+1, rightInd, sortBy);
-
-            // Merge the sorted halves
-            mergeAlbumArray(leftInd, mid, rightInd, sortBy);
+            mergeAlbumArray(leftInd, mid, rightInd, sortBy); // Merge each of the halves
         }
     }
 
+    /**
+     * Helper method to merge two sorted arrays
+     *
+     * @param leftInd is the left index of the array
+     * @param mid is the midpoint of the array
+     * @param rightInd is the right index of the array
+     * @param sortBy to sort either by "genre" or by "date"
+     */
     private void mergeAlbumArray(int leftInd, int mid, int rightInd, String sortBy) {
         int sizeSubarray1 = mid - leftInd + 1;
         int sizeSubarray2 = rightInd - mid;
@@ -164,7 +213,14 @@ public class Collection {
         }
     }
 
-    //copy array from one to another
+    /**
+     * Copy one array to another
+     *
+     * @param originalArray is the array we are copying from
+     * @param newArray is the array we are copying into
+     * @param len is the length we want to copy
+     * @param offset is the point in the original array from where we want to copy
+     */
     private void copyArray(Album[] originalArray, Album[] newArray, int len, int offset){
         if(originalArray == null || newArray == null)   return;
         for(int i = 0; i < len; i++){
@@ -173,7 +229,7 @@ public class Collection {
     }
 
     /**
-     * Gets Album number
+     * Accessor method that returns the number of albums
      *
      * @return number of Albums
      */
@@ -181,6 +237,11 @@ public class Collection {
         return this.numAlbums;
     }
 
+    /**
+     * Accessor method that returns the Album
+     *
+     * @return the Album object
+     */
     public Album[] getAlbums() {
         return this.albums;
     }
