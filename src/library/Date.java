@@ -22,14 +22,16 @@ public class Date implements Comparable<Date> {
     public static final int FEB_LEAP_DAYS = 29;
     public static final int FEB_NONLEAP_DAYS = 28;
     public static final int CURR_YEAR = Calendar.getInstance().get(Calendar.YEAR);
+    public static final int CURR_DAY = Calendar.getInstance().get(Calendar.DATE);
+    public static final int CURR_MONTH = Calendar.getInstance().get(Calendar.MONTH) + 1;
 
     /**
      * Created Date obj for Current Date
      */
     public Date() {
-        this.day = Calendar.getInstance().get(Calendar.DATE);
+        this.day = CURR_DAY;
         this.year = CURR_YEAR;
-        this.month = Calendar.getInstance().get(Calendar.MONTH) + 1;
+        this.month = CURR_MONTH;
     }
 
     /**
@@ -54,8 +56,13 @@ public class Date implements Comparable<Date> {
      * @return true if date is valid or else returns false.
      */
     public boolean isValid() {
-        if (this.year >= THE_EIGHTYS && (this.month >= JAN && this.month <= DEC) && this.day > 0 && this.year <= CURR_YEAR) { // valid date
+        if (this.day > 0 && this.year >= THE_EIGHTYS && (this.month >= JAN && this.month <= DEC) && this.year <= CURR_YEAR) { // valid date
 //            System.out.println("isleap year: " + isLeapYear(this.year));
+            if (this.year == CURR_YEAR){ // checks if date = Curr_Year
+                if (this.month > CURR_MONTH || (this.month == CURR_MONTH && this.day > CURR_DAY)) {
+                    return false;
+                }
+            }
             if (isLeapYear(this.year)) { // leap year
                 if (month != FEB && day <= (30 + month % 2)) return true;
                 if (month == FEB && day <= FEB_LEAP_DAYS) return true;
@@ -108,9 +115,22 @@ public class Date implements Comparable<Date> {
 
     /**
      * Testbed main for Date class.
-     * @param args
+     * @param args Refers to arguments.
      */
     public static void main(String[] args) {
+        Date date = new Date("11/21/800");
+        //Test Case #1
+        if (!date.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
 
+        //Test Case #2
+        Date date2 = new Date ("2/29/2018");
+        if (!date2.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        //Test Case #3
+        Date date3 = new Date ("13/20/2018");
+        if (!date3.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
     }
 }

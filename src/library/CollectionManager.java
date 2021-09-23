@@ -96,6 +96,26 @@ public class CollectionManager {
             String title = token.nextToken(); String artist = token.nextToken();
             String genre = token.nextToken(); String releaseDate = token.nextToken();
 
+            StringTokenizer list2 = new StringTokenizer(releaseDate, "/");
+            // user gives > 3 or < 2 fields for Date
+
+            if (list2.countTokens() > 3 || list2.countTokens() < 2) {
+                System.out.println("Invalid Date!");
+                return;
+            }
+
+            int dateList[] = new int[3];
+            int i = 0;
+            while (i < dateList.length) { // checks if fields are integers
+                try {
+                    dateList[i] = Integer.parseInt(list2.nextToken());
+                    i++;
+                } catch (NumberFormatException e) {
+                    System.out.println("Invalid Date!");
+                    break;
+                }
+            }
+            if (i != dateList.length) return; // caught exception
             Date date = new Date(releaseDate);
 
             //checks if data isValid
