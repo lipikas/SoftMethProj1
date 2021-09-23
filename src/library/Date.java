@@ -116,6 +116,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Gets date in String format.
+     *
      * @return String format of the date.
      */
     public String getDate() {

@@ -11,11 +11,9 @@ import java.util.StringTokenizer;
 
 public class CollectionManager {
 
-    public static final int addMaxCount = 4;
-    public static final int methodMaxCount = 3;
-    public static final int addOutOfBound = 3;
-    public static final int addLessThanMax = 2;
-    public static final int minInputSize = 2;
+    public static final int ADD_MAX_COUNT = 4;
+    public static final int MAX_SIZE = 2;
+//    public static final int addOutOfBound = 3;
 
     /**
      * Given input, scans for method names and calls respective add, remove, lend, & etc methods for albums.
@@ -27,7 +25,7 @@ public class CollectionManager {
 
         while (scan.hasNext()) {
             String input = scan.nextLine();
-            if (input.length() <= minInputSize) {
+            if (input.length() <= MAX_SIZE) {
                 int val = commandCheck(input, list);// checks for invalid commands
                 if (val == 1) break; // breaks for quit command
                 else continue; // Invalid and 1 char case
@@ -80,9 +78,9 @@ public class CollectionManager {
      * @return true if invalid command or else return false
      */
     private void inputVerification(String method, StringTokenizer token, Collection list) {
-        if (method.compareTo("A") == 0 && token.countTokens() == addMaxCount) { // add album
+        if (method.compareTo("A") == 0 && token.countTokens() == ADD_MAX_COUNT) { // add album
             if (checkAddMethod(token, list)) return;
-        } else if (token.countTokens() == methodMaxCount) {
+        } else if (token.countTokens() == MAX_SIZE) {
             if (method.compareTo("D") == 0) { // delete album
                 deleteCheck(token, list);
             } else if (method.compareTo("L") == 0) {// lend method
@@ -130,8 +128,9 @@ public class CollectionManager {
 
     /**
      * Checks if album exists in collection, otherwise adds album to Collection
+     *
      * @param token is input given by user.
-     * @param list is the Collection obj which refers to Album []
+     * @param list  is the Collection obj which refers to Album []
      * @return true if date is invalid, return false otherwise
      */
     private boolean checkAddMethod(StringTokenizer token, Collection list) {
@@ -154,8 +153,9 @@ public class CollectionManager {
 
     /**
      * Checks if album is not in collection, otherwise deletes album from Collection
+     *
      * @param token is input given by user.
-     * @param list is the Collection obj which refers to Album []
+     * @param list  is the Collection obj which refers to Album []
      */
     private void deleteCheck(StringTokenizer token, Collection list) {
         String title = token.nextToken();
@@ -172,8 +172,9 @@ public class CollectionManager {
 
     /**
      * Checks if album has been lent, otherwise lends the album.
+     *
      * @param token is input given by user.
-     * @param list is the Collection obj which refers to Album []
+     * @param list  is the Collection obj which refers to Album []
      */
     private void lendCheck(StringTokenizer token, Collection list) {
         if (list.getAlbumNumber() > 0) {
@@ -194,8 +195,9 @@ public class CollectionManager {
 
     /**
      * Checks if album has been returned or not.
+     *
      * @param token is input given by user
-     * @param list is the Collection obj which refers to Album []
+     * @param list  is the Collection obj which refers to Album []
      */
     private void returnCheck(StringTokenizer token, Collection list) {
         if (list.getAlbumNumber() > 0) {
@@ -215,8 +217,9 @@ public class CollectionManager {
 
     /**
      * Checks if collection isn't empty and prints albums.
+     *
      * @param input is input given by user
-     * @param list is the Collection obj which refers to Album []
+     * @param list  is the Collection obj which refers to Album []
      * @return -1 if empty collection, return 0 otherwise
      */
     private int checkPrint(String input, Collection list) {
@@ -233,8 +236,9 @@ public class CollectionManager {
 
     /**
      * Checks if collection isn't empty and prints albums by genre.
+     *
      * @param input is input given by user
-     * @param list is input given by user
+     * @param list  is input given by user
      * @return -1 if empty collection, return 0 otherwise
      */
     private int checkPrintGenre(String input, Collection list) {

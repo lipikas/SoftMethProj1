@@ -2,7 +2,15 @@ package library;
 
 import java.util.Calendar;
 
+/**
+ * Runs CollectionManager Class.
+ * @author Lipika
+ */
 public class RunProject1 {
+    /**
+     * Runs CollectionManager Class.
+     * @param args is arguments
+     */
     public static void main(String[] args) {
         new CollectionManager().run();
 //        Album album = new Album("When life throws u lemons", "Michael jackson", "Jazz", "01/30/1966");

@@ -30,7 +30,8 @@ public class Album {
 
     /**
      * Creates Album object only for title and artist
-     * @param title Refers to the Album title.
+     *
+     * @param title  Refers to the Album title.
      * @param artist Refers to artist name.
      */
     public Album(String title, String artist) {
