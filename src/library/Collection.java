@@ -51,6 +51,7 @@ public class Collection {
         for (int i = index; i < numAlbums; i++) {
             albums[i] = albums[i + 1];
         }
+        this.numAlbums--;
         return true;
     }
 
@@ -58,9 +59,9 @@ public class Collection {
     public boolean lendingOut(Album album) {
         for (int i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album) == true) { //checking if album exists in collection
-                if(!albums[i].getAvailability()) return false;
+                if(!albums[i].getAvailability()) return false;// not available
                 albums[i].setNotAvailable();
-                return true;
+                return true; // available
             }
         }
         return false; //album does not exist in collection
@@ -71,10 +72,10 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album) == true) { //checking if album exists in collection
                 if (albums[i].getAvailability() == true) { //checking if album has indeed been lent out
-                    return false;
+                    return false; // album never lent out
                 }
                 albums[i].setAvailable();
-                return true;
+                return true; // album returned
             }
         }
         return false; //album does not exist in collection
@@ -92,6 +93,13 @@ public class Collection {
 //    public void printByReleaseDate() {}
 //    public void printByGenre() {}
 
+    /**
+     * Gets Album number
+     * @return number of Albums
+     */
+    public int getAlbumNumber(){
+        return this.numAlbums;
+    }
     /**
      * Testbed main for Collections class
      */
@@ -150,5 +158,9 @@ public class Collection {
         boolReturn = collection.returnAlbum(album4);
         System.out.println("Album return: " + boolReturn);
         collection.print();
+    }
+
+    public Album[] getAlbums(){
+        return this.albums;
     }
 }

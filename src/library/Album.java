@@ -27,6 +27,11 @@ public class Album {
         this.isAvailable = true;
     }
 
+    public Album (String title, String artist){
+        this.title = title;
+        this.artist = artist;
+    }
+
     /**
      * Method checks if title and artist are same for two albums.
      *
@@ -50,7 +55,10 @@ public class Album {
      */
     @Override
     public String toString() {
-        return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate + ".";
+        String availability = "";
+        if (this.getAvailability()) availability = "is available";
+        else availability = "is not available";
+        return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate + "::" + availability;
     }
 
     public boolean getAvailability() { return this.isAvailable; }
