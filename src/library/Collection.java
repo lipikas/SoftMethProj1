@@ -60,7 +60,7 @@ public class Collection {
         for (int i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album) == true) { //checking if album exists in collection
                 if (!albums[i].getAvailability()) return false;// not available
-                albums[i].setNotAvailable();
+                albums[i].NotAvailable();
                 return true; // available
             }
         }
@@ -74,7 +74,7 @@ public class Collection {
                 if (albums[i].getAvailability() == true) { //checking if album has indeed been lent out
                     return false; // album never lent out
                 }
-                albums[i].setAvailable();
+                albums[i].Available();
                 return true; // album returned
             }
         }

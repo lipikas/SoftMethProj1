@@ -1,7 +1,7 @@
 package library;
 
 /**
- * This is an Album class that contains title, artist, genre, release Date & isAvailable.
+ * Creates Album object and has respective album methods.
  *
  * @author Lipika
  */
@@ -15,10 +15,10 @@ public class Album {
     /**
      * Album constructor creates Album obj.
      *
-     * @param title       - Refers to the Album title.
-     * @param artist
-     * @param genre       - Refers to Album genre.
-     * @param releaseDate - Refers to Album release Date.
+     * @param title       Refers to the Album title.
+     * @param artist      Refers to artist name.
+     * @param genre       Refers to Album genre.
+     * @param releaseDate Refers to Album release Date.
      */
     public Album(String title, String artist, String genre, String releaseDate) {
         this.title = title;
@@ -28,6 +28,11 @@ public class Album {
         this.isAvailable = true;
     }
 
+    /**
+     * Creates Album object only for title and artist
+     * @param title Refers to the Album title.
+     * @param artist Refers to artist name.
+     */
     public Album(String title, String artist) {
         this.title = title;
         this.artist = artist;
@@ -37,7 +42,7 @@ public class Album {
      * Method checks if title and artist are same for two albums.
      *
      * @param obj is Album object.
-     * @return true if title and artist are title and artist are same for two albums or else false.
+     * @return true if title and artist are same for two albums or else return false.
      */
     @Override
     public boolean equals(Object obj) {
@@ -63,7 +68,7 @@ public class Album {
     }
 
     /**
-     * Gets Availability.
+     * Gets availability of Albums.
      *
      * @return true if availability is true otherwise return false.
      */
@@ -74,14 +79,14 @@ public class Album {
     /**
      * Sets isAvailable to false.
      */
-    public void setNotAvailable() {
+    public void NotAvailable() {
         this.isAvailable = false;
     }
 
     /**
      * Sets isAvailable to true.
      */
-    public void setAvailable() {
+    public void Available() {
         this.isAvailable = true;
     }
 }

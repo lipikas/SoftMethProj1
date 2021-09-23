@@ -7,7 +7,7 @@ public class Genre {
     /**
      * Constructor sets genre.
      *
-     * @param genre - GenreName.
+     * @param genre Refers to GenreName.
      */
     public Genre(String genre) {
         if (genre.equals("Classical") || genre.equals("classical")) {
@@ -22,9 +22,9 @@ public class Genre {
     }
 
     /**
-     * Gets Genre Name
+     * Gets Genre Name.
      *
-     * @return genreName
+     * @return genreName in String format.
      */
     public String getGenreName() {
         return this.genreName;
