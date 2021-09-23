@@ -8,6 +8,11 @@ import java.util.StringTokenizer;
  */
 
 public class CollectionManager {
+
+    public static final int addMaxCount = 4;
+    public static final int methodMaxCount = 3;
+    public static final int addOutOfBound = 3;
+    public static final int addLessThanMax = 2;
     /**
      * Given input, scans for method names and calls respective add, remove, lend, & etc methods for albums.
      */
@@ -91,7 +96,7 @@ public class CollectionManager {
      * @return true if invalid command else false
      */
     private void checkMethod(String method, StringTokenizer token, Collection list){
-        if (method.compareTo("A") == 0 && token.countTokens() == 4){ // add album
+        if (method.compareTo("A") == 0 && token.countTokens() == addMaxCount){ // add album
             // defines tokens
             String title = token.nextToken(); String artist = token.nextToken();
             String genre = token.nextToken(); String releaseDate = token.nextToken();
@@ -99,7 +104,7 @@ public class CollectionManager {
             StringTokenizer list2 = new StringTokenizer(releaseDate, "/");
             // user gives > 3 or < 2 fields for Date
 
-            if (list2.countTokens() > 3 || list2.countTokens() < 2) {
+            if (list2.countTokens() > addOutOfBound || list2.countTokens() < addLessThanMax) {
                 System.out.println("Invalid Date!");
                 return;
             }
@@ -124,7 +129,7 @@ public class CollectionManager {
             if (!list.add(album)) System.out.println(album.toString() +" >> is already in the collection."); // adds album
             else System.out.println(album.toString() +" >> added.");
         }
-        else if (token.countTokens() == 2){
+        else if (token.countTokens() == methodMaxCount){
             if (method.compareTo("D") == 0){ // delete album
                 String title = token.nextToken(); String artist = token.nextToken();
                 if (list.getAlbumNumber() > 0){

@@ -85,8 +85,7 @@ public class Collection {
     public void print() {
         //TODO: Check if numAlbums > 0 in driver method
         for (int i = 0; i < numAlbums; i++) {
-            albums[i].printAlbum();
-            ;
+            albums[i].toString();
         }
     }
 

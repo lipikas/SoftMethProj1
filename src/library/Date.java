@@ -24,6 +24,8 @@ public class Date implements Comparable<Date> {
     public static final int CURR_YEAR = Calendar.getInstance().get(Calendar.YEAR);
     public static final int CURR_DAY = Calendar.getInstance().get(Calendar.DATE);
     public static final int CURR_MONTH = Calendar.getInstance().get(Calendar.MONTH) + 1;
+    public static final int THIRTYS = 30; // not sure if we can make variable like this
+    public static final int TWO = 2;
 
     /**
      * Created Date obj for Current Date
@@ -64,10 +66,10 @@ public class Date implements Comparable<Date> {
                 }
             }
             if (isLeapYear(this.year)) { // leap year
-                if (month != FEB && day <= (30 + month % 2)) return true;
+                if (month != FEB && day <= (THIRTYS + month % TWO)) return true;
                 if (month == FEB && day <= FEB_LEAP_DAYS) return true;
             } else {// not leap year
-                if (month != FEB && day <= (30 + month % 2)) return true;
+                if (month != FEB && day <= (THIRTYS + month % TWO)) return true;
                 if (month == FEB && day <= FEB_NONLEAP_DAYS) return true;
             }
         }

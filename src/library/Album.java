@@ -61,19 +61,19 @@ public class Album {
         return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate.getDate() + "::" + availability;
     }
 
+    /**
+     * Gets Availability.
+     * @return true if availability is true otherwise return false.
+     */
     public boolean getAvailability() { return this.isAvailable; }
 
+    /**
+     * Sets isAvailable to false.
+     */
     public void setNotAvailable() { this.isAvailable = false; }
 
+    /**
+     * Sets isAvailable to true.
+     */
     public void setAvailable() { this.isAvailable = true; }
-
-    public void printAlbum() {
-        System.out.print(this.title + "::" + this.artist + "::");
-        this.genre.printGenre();
-        System.out.print("::");
-        this.releaseDate.getDate();
-        if (this.getAvailability()) System.out.print("::" + "is available");
-        else System.out.print("::" + "is not available");
-        System.out.println("");
-    }
 }
