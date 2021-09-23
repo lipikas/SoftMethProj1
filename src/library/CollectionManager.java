@@ -18,11 +18,12 @@ public class CollectionManager {
 
         while(scan.hasNext()){
             String input = scan.nextLine();
-            int val = 0;
-            if (input.length()<=2)  val = commandCheck(input, list); // checks for invalid commands
-            if (val == 1) break; // breaks for quit command
-            if (val == -1 && input.length() <=2) continue; // Invalid and null case
-
+            //System.out.println("Hi");
+            if (input.length() <=2) {
+                int val = commandCheck(input, list);// checks for invalid commands
+                if (val == 1) break; // breaks for quit command
+                else continue; // Invalid and one char case
+            }
             StringTokenizer token = new StringTokenizer(input, ",");
             if (token.countTokens() <= 1)  {
                 System.out.println("Invalid command! 2");
@@ -91,8 +92,16 @@ public class CollectionManager {
      */
     private void checkMethod(String method, StringTokenizer token, Collection list){
         if (method.compareTo("A") == 0 && token.countTokens() == 4){ // add album
-            Album album = new Album(token.nextToken(), token.nextToken(), token.nextToken(), token.nextToken());
-            if (!list.add(album)) System.out.println(album.toString() +" >> is already in the collection.");
+            // defines tokens
+            String title = token.nextToken(); String artist = token.nextToken();
+            String genre = token.nextToken(); String releaseDate = token.nextToken();
+
+            Date date = new Date(releaseDate);
+
+            //checks if data isValid
+            if (!date.isValid()) {System.out.println("Invalid Date!"); return;}
+            Album album = new Album(title, artist, genre, releaseDate);
+            if (!list.add(album)) System.out.println(album.toString() +" >> is already in the collection."); // adds album
             else System.out.println(album.toString() +" >> added.");
         }
         else if (token.countTokens() == 2){
@@ -129,7 +138,7 @@ public class CollectionManager {
             else if (method.compareTo("R") == 0){// return album
                 if (list.getAlbumNumber() > 0){
                     String title = token.nextToken(); String artist = token.nextToken();
-                    if (!list.returnAlbum(new Album(title, artist))){ // returns album
+                    if (list.returnAlbum(new Album(title, artist))){ // returns album
                         System.out.println(title + "::" + artist+" >> returning and set to available.");
                     }
                     else if (!checkAlbumExists(list, new Album(title, artist))){ // not in collection

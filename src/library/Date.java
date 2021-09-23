@@ -55,7 +55,7 @@ public class Date implements Comparable<Date> {
      */
     public boolean isValid() {
         if (this.year >= THE_EIGHTYS && (this.month >= JAN && this.month <= DEC) && this.day > 0 && this.year <= CURR_YEAR) { // valid date
-            System.out.println("isleap year: " + isLeapYear(this.year));
+//            System.out.println("isleap year: " + isLeapYear(this.year));
             if (isLeapYear(this.year)) { // leap year
                 if (month != FEB && day <= (30 + month % 2)) return true;
                 if (month == FEB && day <= FEB_LEAP_DAYS) return true;
@@ -102,8 +102,8 @@ public class Date implements Comparable<Date> {
         return 0; // year matches - case
     }
 
-    public void printDate() {
-        System.out.print(this.month + "/" + this.day + "/" + this.year);
+    public String getDate() {
+        return this.month + "/" + this.day + "/" + this.year;
     }
 
     /**

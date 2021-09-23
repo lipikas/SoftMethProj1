@@ -58,7 +58,7 @@ public class Album {
         String availability = "";
         if (this.getAvailability()) availability = "is available";
         else availability = "is not available";
-        return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate + "::" + availability;
+        return this.title + "::" + this.artist + "::" + this.genre.getGenreName() + "::" + this.releaseDate.getDate() + "::" + availability;
     }
 
     public boolean getAvailability() { return this.isAvailable; }
@@ -71,7 +71,7 @@ public class Album {
         System.out.print(this.title + "::" + this.artist + "::");
         this.genre.printGenre();
         System.out.print("::");
-        this.releaseDate.printDate();
+        this.releaseDate.getDate();
         if (this.getAvailability()) System.out.print("::" + "is available");
         else System.out.print("::" + "is not available");
         System.out.println("");

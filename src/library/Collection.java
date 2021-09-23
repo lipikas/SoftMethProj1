@@ -22,7 +22,7 @@ public class Collection {
 
     //increase the capacity of the array list by 4
     private void grow() {
-        System.out.println("Collection is growing"); //TODO: delete this statement
+        //System.out.println("Collection is growing"); //TODO: delete this statement
         Album[] longerAlbums = new Album[numAlbums + 4];
         for (int i = 0; i < numAlbums; i++) {
             longerAlbums[i] = albums[i];
