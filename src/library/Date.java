@@ -38,6 +38,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Method takes “mm/dd/yyyy” and creates a Date object.
+     *
      * @param date - Refers to release date of Album.
      */
     public Date(String date) {
@@ -55,12 +56,13 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks if date is valid or not
+     *
      * @return true if date is valid or else returns false.
      */
     public boolean isValid() {
         if (this.day > 0 && this.year >= THE_EIGHTYS && (this.month >= JAN && this.month <= DEC) && this.year <= CURR_YEAR) { // valid date
 //            System.out.println("isleap year: " + isLeapYear(this.year));
-            if (this.year == CURR_YEAR){ // checks if date = Curr_Year
+            if (this.year == CURR_YEAR) { // checks if date = Curr_Year
                 if (this.month > CURR_MONTH || (this.month == CURR_MONTH && this.day > CURR_DAY)) {
                     return false;
                 }
@@ -78,6 +80,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Checks if year is Leap year.
+     *
      * @param year - Refers to year Album was released.
      * @return true if leap year else false
      */
@@ -92,6 +95,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Compares dates if one date is >= or < the other date
+     *
      * @param date - Date inputted by user.
      * @return 1 if date1 > date 2, 0 if date 1 = date 2 and -1 if date 1 < date 2
      */
@@ -117,6 +121,7 @@ public class Date implements Comparable<Date> {
 
     /**
      * Testbed main for Date class.
+     *
      * @param args Refers to arguments.
      */
     public static void main(String[] args) {
@@ -126,12 +131,12 @@ public class Date implements Comparable<Date> {
         else System.out.println("Fail.");
 
         //Test Case #2
-        Date date2 = new Date ("2/29/2018");
+        Date date2 = new Date("2/29/2018");
         if (!date2.isValid()) System.out.println("Pass.");
         else System.out.println("Fail.");
 
         //Test Case #3
-        Date date3 = new Date ("13/20/2018");
+        Date date3 = new Date("13/20/2018");
         if (!date3.isValid()) System.out.println("Pass.");
         else System.out.println("Fail.");
     }

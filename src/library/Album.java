@@ -14,9 +14,10 @@ public class Album {
 
     /**
      * Album constructor creates Album obj.
-     * @param title - Refers to the Album title.
+     *
+     * @param title       - Refers to the Album title.
      * @param artist
-     * @param genre - Refers to Album genre.
+     * @param genre       - Refers to Album genre.
      * @param releaseDate - Refers to Album release Date.
      */
     public Album(String title, String artist, String genre, String releaseDate) {
@@ -27,7 +28,7 @@ public class Album {
         this.isAvailable = true;
     }
 
-    public Album (String title, String artist){
+    public Album(String title, String artist) {
         this.title = title;
         this.artist = artist;
     }
@@ -63,17 +64,24 @@ public class Album {
 
     /**
      * Gets Availability.
+     *
      * @return true if availability is true otherwise return false.
      */
-    public boolean getAvailability() { return this.isAvailable; }
+    public boolean getAvailability() {
+        return this.isAvailable;
+    }
 
     /**
      * Sets isAvailable to false.
      */
-    public void setNotAvailable() { this.isAvailable = false; }
+    public void setNotAvailable() {
+        this.isAvailable = false;
+    }
 
     /**
      * Sets isAvailable to true.
      */
-    public void setAvailable() { this.isAvailable = true; }
+    public void setAvailable() {
+        this.isAvailable = true;
+    }
 }

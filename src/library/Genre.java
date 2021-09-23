@@ -6,6 +6,7 @@ public class Genre {
 
     /**
      * Constructor sets genre.
+     *
      * @param genre - GenreName.
      */
     public Genre(String genre) {
@@ -22,13 +23,14 @@ public class Genre {
 
     /**
      * Gets Genre Name
+     *
      * @return genreName
      */
     public String getGenreName() {
         return this.genreName;
     }
 
-    public void printGenre(){
+    public void printGenre() {
         System.out.print(this.genreName);
     }
 }

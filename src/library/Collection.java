@@ -5,7 +5,7 @@ public class Collection {
     private int numAlbums; //number of albums currently in the collection
 
     //default constructor
-    public Collection(){
+    public Collection() {
         this.albums = new Album[4];
         this.numAlbums = 0;
     }
@@ -34,7 +34,7 @@ public class Collection {
     public boolean add(Album album) {
 
         int index = find(album);
-        if(index != -1) return false; //album already exists in collection
+        if (index != -1) return false; //album already exists in collection
 
         if (numAlbums == albums.length) { //if collection is of max size
             grow(); //increase size
@@ -47,7 +47,7 @@ public class Collection {
     //maintains same order of albums after deletion
     public boolean remove(Album album) {
         int index = find(album);
-        if(index == -1) return false; //album does not exist in collection
+        if (index == -1) return false; //album does not exist in collection
         for (int i = index; i < numAlbums; i++) {
             albums[i] = albums[i + 1];
         }
@@ -59,7 +59,7 @@ public class Collection {
     public boolean lendingOut(Album album) {
         for (int i = 0; i < numAlbums; i++) {
             if (albums[i].equals(album) == true) { //checking if album exists in collection
-                if(!albums[i].getAvailability()) return false;// not available
+                if (!albums[i].getAvailability()) return false;// not available
                 albums[i].setNotAvailable();
                 return true; // available
             }
@@ -94,15 +94,17 @@ public class Collection {
 
     /**
      * Gets Album number
+     *
      * @return number of Albums
      */
-    public int getAlbumNumber(){
+    public int getAlbumNumber() {
         return this.numAlbums;
     }
+
     /**
      * Testbed main for Collections class
      */
-    public static void main(String[] args){
+    public static void main(String[] args) {
         Collection collection = new Collection();
 
         //adding and removing albums from collection
@@ -159,7 +161,7 @@ public class Collection {
         collection.print();
     }
 
-    public Album[] getAlbums(){
+    public Album[] getAlbums() {
         return this.albums;
     }
 }
