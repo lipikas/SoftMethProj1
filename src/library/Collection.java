@@ -32,10 +32,8 @@ public class Collection {
 
     //adds an album to the end of the collection
     public boolean add(Album album) {
-
         int index = find(album);
         if(index != -1) return false; //album already exists in collection
-
         if (numAlbums == albums.length) { //if collection is of max size
             grow(); //increase size
         }
@@ -56,28 +54,20 @@ public class Collection {
 
     //set to not available
     public boolean lendingOut(Album album) {
-        for (int i = 0; i < numAlbums; i++) {
-            if (albums[i].equals(album) == true) { //checking if album exists in collection
-                if(!albums[i].getAvailability()) return false;
-                albums[i].setNotAvailable();
-                return true;
-            }
-        }
-        return false; //album does not exist in collection
+        int index = find(album);
+        if(index == -1) return false; //album does not exist in collection
+        if(!albums[index].getAvailability()) return false; //album is not available i.e., already lent out
+        albums[index].setNotAvailable();
+        return true;
     }
 
     //set to available
     public boolean returnAlbum(Album album) {
-        for (int i = 0; i < numAlbums; i++) {
-            if (albums[i].equals(album) == true) { //checking if album exists in collection
-                if (albums[i].getAvailability() == true) { //checking if album has indeed been lent out
-                    return false;
-                }
-                albums[i].setAvailable();
-                return true;
-            }
-        }
-        return false; //album does not exist in collection
+        int index = find(album);
+        if(index == -1) return false; //album does not exist in collection
+        if(albums[index].getAvailability()) return false; //album is available i.e., never lent out
+        albums[index].setAvailable();
+        return true;
     }
 
     //display the list without specifying the order
@@ -85,13 +75,67 @@ public class Collection {
         //TODO: Check if numAlbums > 0 in driver method
         for (int i = 0; i < numAlbums; i++) {
             albums[i].printAlbum();
-            ;
         }
     }
 
-//    public void printByReleaseDate() {}
-//    public void printByGenre() {}
+    public void printByReleaseDate() {
 
+    }
+//    public void printByGenre() {}
+void merge(int arr[], int l, int m, int r) {
+    // Find sizes of two subarrays to be merged
+    int n1 = m - l + 1;
+    int n2 = r - m;
+
+    /* Create temp arrays */
+    int L[] = new int [n1];
+    int R[] = new int [n2];
+
+    /*Copy data to temp arrays*/
+    for (int i=0; i<n1; ++i)
+        L[i] = arr[l + i];
+    for (int j=0; j<n2; ++j)
+        R[j] = arr[m + 1+ j];
+
+
+    /* Merge the temp arrays */
+
+    // Initial indexes of first and second subarrays
+    int i = 0, j = 0;
+
+    // Initial index of merged subarray array
+    int k = l;
+    while (i < n1 && j < n2)
+    {
+        if (L[i] <= R[j])
+        {
+            arr[k] = L[i];
+            i++;
+        }
+        else
+        {
+            arr[k] = R[j];
+            j++;
+        }
+        k++;
+    }
+
+    /* Copy remaining elements of L[] if any */
+    while (i < n1)
+    {
+        arr[k] = L[i];
+        i++;
+        k++;
+    }
+
+    /* Copy remaining elements of R[] if any */
+    while (j < n2)
+    {
+        arr[k] = R[j];
+        j++;
+        k++;
+    }
+}
     /**
      * Testbed main for Collections class
      */
