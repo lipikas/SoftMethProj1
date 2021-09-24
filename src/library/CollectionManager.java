@@ -11,6 +11,7 @@ import java.util.StringTokenizer;
 //TODO: there needs to be a newline after the user entered commands and what we print
 public class CollectionManager {
 
+
     public static final int ADD_MAX_COUNT = 4;
     public static final int MAX_SIZE = 2;
 //    public static final int addOutOfBound = 3;
