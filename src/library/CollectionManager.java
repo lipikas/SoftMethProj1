@@ -78,7 +78,7 @@ public class CollectionManager {
             } else if (method.compareTo("L") == 0) {// lend method
                 lendCheck(token, list);
             } else if (method.compareTo("R") == 0) {// return album
-                lendCheck(token, list);
+                returnCheck(token, list);
             } else {
                 System.out.println("Invalid command! 4");
             }
@@ -131,7 +131,6 @@ public class CollectionManager {
         String genre = token.nextToken();
         String releaseDate = token.nextToken();
 
-        StringTokenizer list2 = new StringTokenizer(releaseDate, "/");
         Date date = new Date(releaseDate);
         if (!date.isValid()) {
             System.out.println("Invalid Date!");
