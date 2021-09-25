@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 /**
  * Creates a Collection of Albums based on the Input Stream.
  *
- * @author Lipika
+ * @author Lipika, Kenisha
  */
 
 public class CollectionManager {

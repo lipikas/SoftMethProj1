@@ -3,7 +3,7 @@ package library;
 /**
  * Creates Genre Object.
  *
- * @author Lipika
+ * @author Lipika, Kenisha
  */
 public class Genre {
 

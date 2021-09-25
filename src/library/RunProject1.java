@@ -3,7 +3,7 @@ package library;
 /**
  * Runs CollectionManager Class.
  *
- * @author Lipika
+ * @author Lipika, Kenisha
  */
 public class RunProject1 {
     /**

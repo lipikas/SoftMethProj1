@@ -3,7 +3,7 @@ package library;
 /**
  * Creates Album object and has respective album methods.
  *
- * @author Lipika
+ * @author Lipika, Kenisha
  */
 public class Album {
     private String title;

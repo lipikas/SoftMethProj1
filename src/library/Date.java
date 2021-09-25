@@ -6,7 +6,7 @@ import java.util.StringTokenizer;
 /**
  * Date class creates Date obj and has respective Date methods.
  *
- * @author Lipika
+ * @author Lipika, Kenisha
  */
 public class Date implements Comparable<Date> {
     private int year;

@@ -3,7 +3,7 @@ package library;
 /**
  * Creates Collection object.
  *
- * @author Kenisha
+ * @author Kenisha, Lipika
  */
 public class Collection {
     private Album[] albums;
@@ -225,67 +225,5 @@ public class Collection {
      */
     public Album[] getAlbums() {
         return this.albums;
-    }
-
-    /**
-     * Testbed main for Collections class
-     */
-    public static void main(String[] args) {
-        Collection collection = new Collection();
-
-        //adding and removing albums from collection
-        Album album1 = new Album("Album 1", "Artist 1", "Pop", "06/11/2001");
-        Album album1Duplicate = new Album("Album 1", "Artist 1", "Jazz", "08/11/2001");
-        Album album2 = new Album("Album 2", "Artist 2", "Classical", "07/11/1986");
-        Album album3 = new Album("Album 1", "Artist 3", "Pop", "09/11/1996");
-        Album album4 = new Album("Album 4", "Artist 4", "abcd", "10/11/2030");
-        Album album5 = new Album("Album 5", "Artist 4", "Country", "10/11/2000");
-        boolean boolAdd = collection.add(album1);
-        System.out.println("Album added: " + boolAdd);
-        collection.print();
-        boolAdd = collection.add(album1Duplicate);
-        System.out.println("Album added: " + boolAdd);
-        collection.print();
-        boolAdd = collection.add(album2);
-        System.out.println("Album added: " + boolAdd);
-        collection.print();
-//        boolean boolRemove = collection.remove(album2);
-//        System.out.println("Album removed: " + boolRemove);
-//        collection.print();
-//        boolRemove = collection.remove(album2);
-//        System.out.println("Album removed: " + boolRemove);
-//        collection.print();
-//        boolAdd = collection.add(album3);
-//        System.out.println("Album added: " + boolAdd);
-//        collection.print();
-        boolAdd = collection.add(album4);
-        System.out.println("Album added: " + boolAdd);
-        collection.print();
-        boolAdd = collection.add(album5);
-        System.out.println("Album added: " + boolAdd);
-        collection.print();
-//        boolRemove = collection.remove(album1);
-//        System.out.println("Album removed: " + boolRemove);
-//        collection.print();
-//        boolRemove = collection.remove(album3);
-//        System.out.println("Album removed: " + boolRemove);
-//        collection.print();
-//        boolRemove = collection.remove(album3);
-//        System.out.println("Album removed: " + boolRemove);
-//        collection.print();
-        boolean lend = collection.lendingOut(album3);
-        System.out.println("Album lending: " + lend);
-        collection.print();
-        lend = collection.lendingOut(album1);
-        System.out.println("Album lending: " + lend);
-        collection.print();
-        boolean boolReturn = collection.returnAlbum(album1);
-        System.out.println("Album return: " + boolReturn);
-        collection.print();
-        boolReturn = collection.returnAlbum(album4);
-        System.out.println("Album return: " + boolReturn);
-        collection.print();
-        System.out.println("\n* * * PRINTING BY DATE * * *\n");
-        collection.printByGenre();
     }
 }
