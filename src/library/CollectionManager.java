@@ -25,6 +25,7 @@ public class CollectionManager {
 
         while (scan.hasNext()) {
             String input = scan.nextLine();
+            if(isWhiteSpace(input)) continue;
             if (input.length() <= MAX_SIZE) {
                 int val = commandCheck(input, list);// checks for invalid commands
                 if (val == 1) break; // breaks for quit command
@@ -40,7 +41,13 @@ public class CollectionManager {
             inputVerification(method, token, list);
         }
     }
-
+    private boolean isWhiteSpace(String input){
+        for(int i = 0; i < input.length(); i++){
+            char c = input.charAt(i);
+            if(c == ' ' || c == '\n' || c == '\r' || c == '\t') return true;
+        }
+        return false;
+    }
     /**
      * Given input, calls respective methods and checks for invalid commands.
      *

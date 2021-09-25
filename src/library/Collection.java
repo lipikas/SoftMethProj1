@@ -12,7 +12,6 @@ public class Collection {
         this.numAlbums = 0;
     }
 
-    //returns album index, or return -1
     /**
      * Searches for an Album in a Collection
      *
@@ -33,9 +32,6 @@ public class Collection {
      */
     private void grow() {
         Album[] longerAlbums = new Album[numAlbums + 4];
-//        for (int i = 0; i < numAlbums; i++) {
-//            longerAlbums[i] = albums[i];
-//        }
         copyArray(albums, longerAlbums, numAlbums,0);
         albums = longerAlbums;
     }
@@ -88,7 +84,6 @@ public class Collection {
         return true;
     }
 
-    //set to available
     /**
      * Sets an Album to available when returned.
      *
@@ -107,7 +102,6 @@ public class Collection {
      * Print the Albums in no specific order.
      */
     public void print() {
-        //TODO: Check if numAlbums > 0 in driver method
         for (int i = 0; i < numAlbums; i++) {
             System.out.println(albums[i].toString());
         }
@@ -154,59 +148,42 @@ public class Collection {
      * @param sortBy to sort either by "genre" or by "date"
      */
     private void mergeAlbumArray(int leftInd, int mid, int rightInd, String sortBy) {
-        int sizeSubarray1 = mid - leftInd + 1;
-        int sizeSubarray2 = rightInd - mid;
+        int sizeSubArray1 = mid - leftInd + 1;
+        int sizeSubArray2 = rightInd - mid;
 
-        /* Create temp arrays */
-        Album[] tempLeftArray = new Album[sizeSubarray1];
-        Album[] tempRightArray = new Album[sizeSubarray2];
+        Album[] tempLeftArray = new Album[sizeSubArray1];
+        Album[] tempRightArray = new Album[sizeSubArray2];
 
-        /*Copy data to temp arrays*/
-        copyArray(albums, tempLeftArray, sizeSubarray1, leftInd);
-//        for (int i = 0; i < sizeSubarray1; i++){
-//            tempLeftArray[i] = albums[leftInd + i];
-//        }
-        copyArray(albums, tempRightArray, sizeSubarray2, mid + 1);
-//        for (int i = 0; i < sizeSubarray2; i++){
-//            tempRightArray[i] = albums[mid + i + 1];
-//        }
+        copyArray(albums, tempLeftArray, sizeSubArray1, leftInd);
+        copyArray(albums, tempRightArray, sizeSubArray2, mid + 1);
 
-        /* Merge the temp arrays */
+        int ind1 = 0, ind2 = 0; //initial indexes of temp arrays
+        int compare;
+        int indexMergedArray = leftInd; //initial index of the merged array
+        boolean isDate = sortBy.equals("date");
 
-        // Initial indexes of first and second subarrays
-        int ind1 = 0, ind2 = 0, compare;
-
-        // Initial index of merged subarray array
-        int indexMergedArray = leftInd;
-        boolean isDate = sortBy.equalsIgnoreCase("date");
-        while (ind1 < sizeSubarray1 && ind2 < sizeSubarray2) {
+        while (ind1 < sizeSubArray1 && ind2 < sizeSubArray2) {
             if(isDate)  compare = tempLeftArray[ind1].compareDate(tempRightArray[ind2]);
             else    compare = tempLeftArray[ind1].compareGenre(tempRightArray[ind2]);
 
-            if (compare < 1) //equals -1 or 0 -> rightArray.date < leftArray.date
-            {
+            if (compare < 1) { //compare = -1 or 0 -> rightArray.date < leftArray.date
                 albums[indexMergedArray] = tempLeftArray[ind1];
                 ind1++;
             }
-            else
-            {
+            else {
                 albums[indexMergedArray] = tempRightArray[ind2];
                 ind2++;
             }
             indexMergedArray++;
         }
 
-        /* Copy remaining elements of L[] if any */
-        while (ind1 < sizeSubarray1)
-        {
+        while (ind1 < sizeSubArray1) { //copy any remaining elements of left sub array
             albums[indexMergedArray] = tempLeftArray[ind1];
             ind1++;
             indexMergedArray++;
         }
 
-        /* Copy remaining elements of R[] if any */
-        while (ind2 < sizeSubarray2)
-        {
+        while (ind2 < sizeSubArray2) { //copy any remaining elements of right sub array
             albums[indexMergedArray] = tempRightArray[ind2];
             ind2++;
             indexMergedArray++;
