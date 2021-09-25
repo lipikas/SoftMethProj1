@@ -1,5 +1,10 @@
 package library;
 
+/**
+ * Creates Collection object.
+ *
+ * @author Kenisha
+ */
 public class Collection {
     private Album[] albums;
     private int numAlbums; //number of albums currently in the collection
@@ -7,7 +12,7 @@ public class Collection {
     /**
      * Collection default constructor creates Collection object.
      */
-    public Collection(){
+    public Collection() {
         this.albums = new Album[4];
         this.numAlbums = 0;
     }
@@ -32,7 +37,7 @@ public class Collection {
      */
     private void grow() {
         Album[] longerAlbums = new Album[numAlbums + 4];
-        copyArray(albums, longerAlbums, numAlbums,0);
+        copyArray(albums, longerAlbums, numAlbums, 0);
         albums = longerAlbums;
     }
 
@@ -44,7 +49,7 @@ public class Collection {
      */
     public boolean add(Album album) {
         int index = find(album);
-        if(index != -1) return false; //album already exists in collection
+        if (index != -1) return false; //album already exists in collection
 
         if (numAlbums == albums.length) { //if collection is of max size
             grow(); //increase size
@@ -62,7 +67,7 @@ public class Collection {
      */
     public boolean remove(Album album) {
         int index = find(album);
-        if(index == -1) return false; //album does not exist in collection
+        if (index == -1) return false; //album does not exist in collection
         for (int i = index; i < numAlbums; i++) {
             albums[i] = albums[i + 1];
         }
@@ -78,8 +83,8 @@ public class Collection {
      */
     public boolean lendingOut(Album album) {
         int index = find(album);
-        if(index == -1) return false; //album does not exist in collection
-        if(!albums[index].getAvailability()) return false; //album is not available i.e., already lent out
+        if (index == -1) return false; //album does not exist in collection
+        if (!albums[index].getAvailability()) return false; //album is not available i.e., already lent out
         albums[index].setAvailability(false);
         return true;
     }
@@ -92,8 +97,8 @@ public class Collection {
      */
     public boolean returnAlbum(Album album) {
         int index = find(album);
-        if(index == -1) return false; //album does not exist in collection
-        if(albums[index].getAvailability()) return false; //album is available i.e., never lent out
+        if (index == -1) return false; //album does not exist in collection
+        if (albums[index].getAvailability()) return false; //album is available i.e., never lent out
         albums[index].setAvailability(true);
         return true;
     }
@@ -126,15 +131,15 @@ public class Collection {
     /**
      * Recursive method that sorts Album array in ascending order by Genre or Release Date using Merge Sort
      *
-     * @param leftInd is the left index of the array
+     * @param leftInd  is the left index of the array
      * @param rightInd is the right index of the array
-     * @param sortBy to sort either by "genre" or by "date"
+     * @param sortBy   to sort either by "genre" or by "date"
      */
     public void sortAlbumArray(int leftInd, int rightInd, String sortBy) {
         if (leftInd < rightInd) {
-            int mid = (leftInd+rightInd)/2;
+            int mid = (leftInd + rightInd) / 2;
             sortAlbumArray(leftInd, mid, sortBy); // Sort the first and second halves of the array
-            sortAlbumArray(mid+1, rightInd, sortBy);
+            sortAlbumArray(mid + 1, rightInd, sortBy);
             mergeAlbumArray(leftInd, mid, rightInd, sortBy); // Merge each of the halves
         }
     }
@@ -142,10 +147,10 @@ public class Collection {
     /**
      * Helper method to merge two sorted arrays
      *
-     * @param leftInd is the left index of the array
-     * @param mid is the midpoint of the array
+     * @param leftInd  is the left index of the array
+     * @param mid      is the midpoint of the array
      * @param rightInd is the right index of the array
-     * @param sortBy to sort either by "genre" or by "date"
+     * @param sortBy   to sort either by "genre" or by "date"
      */
     private void mergeAlbumArray(int leftInd, int mid, int rightInd, String sortBy) {
         int sizeSubArray1 = mid - leftInd + 1;
@@ -163,14 +168,13 @@ public class Collection {
         boolean isDate = sortBy.equals("date");
 
         while (ind1 < sizeSubArray1 && ind2 < sizeSubArray2) {
-            if(isDate)  compare = tempLeftArray[ind1].compareDate(tempRightArray[ind2]);
-            else    compare = tempLeftArray[ind1].compareGenre(tempRightArray[ind2]);
+            if (isDate) compare = tempLeftArray[ind1].compareDate(tempRightArray[ind2]);
+            else compare = tempLeftArray[ind1].compareGenre(tempRightArray[ind2]);
 
             if (compare < 1) { //compare = -1 or 0 -> rightArray.date < leftArray.date
                 albums[indexMergedArray] = tempLeftArray[ind1];
                 ind1++;
-            }
-            else {
+            } else {
                 albums[indexMergedArray] = tempRightArray[ind2];
                 ind2++;
             }
@@ -194,13 +198,13 @@ public class Collection {
      * Copy one array to another
      *
      * @param originalArray is the array we are copying from
-     * @param newArray is the array we are copying into
-     * @param len is the length we want to copy
-     * @param offset is the point in the original array from where we want to copy
+     * @param newArray      is the array we are copying into
+     * @param len           is the length we want to copy
+     * @param offset        is the point in the original array from where we want to copy
      */
-    private void copyArray(Album[] originalArray, Album[] newArray, int len, int offset){
-        if(originalArray == null || newArray == null)   return;
-        for(int i = 0; i < len; i++){
+    private void copyArray(Album[] originalArray, Album[] newArray, int len, int offset) {
+        if (originalArray == null || newArray == null) return;
+        for (int i = 0; i < len; i++) {
             newArray[i] = originalArray[i + offset];
         }
     }
@@ -223,7 +227,6 @@ public class Collection {
         return this.albums;
     }
 
-    //TODO: find out if you need a testbed main
     /**
      * Testbed main for Collections class
      */
@@ -285,5 +288,4 @@ public class Collection {
         System.out.println("\n* * * PRINTING BY DATE * * *\n");
         collection.printByGenre();
     }
-
 }

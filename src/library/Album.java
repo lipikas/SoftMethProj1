@@ -54,7 +54,6 @@ public class Album {
         return false;
     }
 
-
     /**
      * Computes textual representation of Album object.
      *
@@ -84,11 +83,23 @@ public class Album {
         this.isAvailable = availability;
     }
 
-    public int compareDate(Album album){
+    /**
+     * Checks if releaseDate are same for 2 albums.
+     *
+     * @param album is Album object
+     * @return 1 if releaseDates match or else return 0.
+     */
+    public int compareDate(Album album) {
         return this.releaseDate.compareTo(album.releaseDate);
     }
 
-    public int compareGenre(Album album){
+    /**
+     * Checks if genre are same for 2 albums.
+     *
+     * @param album is Album object
+     * @return 1 if genres match or else return 0.
+     */
+    public int compareGenre(Album album) {
         return this.genre.getGenreName().compareTo(album.genre.getGenreName());
     }
 

@@ -1,5 +1,10 @@
 package library;
 
+/**
+ * Creates Genre Object.
+ *
+ * @author Lipika
+ */
 public class Genre {
 
     private String genreName;

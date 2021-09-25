@@ -8,12 +8,11 @@ import java.util.StringTokenizer;
  *
  * @author Lipika
  */
-//TODO: there needs to be a newline after the user entered commands and what we print
+
 public class CollectionManager {
 
     public static final int ADD_MAX_COUNT = 4;
     public static final int MAX_SIZE = 2;
-//    public static final int addOutOfBound = 3;
 
     /**
      * Given input, scans for method names and calls respective add, remove, lend, & etc methods for albums.
@@ -33,7 +32,7 @@ public class CollectionManager {
             }
             StringTokenizer token = new StringTokenizer(input, ",");
             if (token.countTokens() <= 1) {
-                System.out.println("Invalid command! 2");
+                System.out.println("Invalid command!");
                 continue;
             }
 
@@ -41,13 +40,21 @@ public class CollectionManager {
             inputVerification(method, token, list);
         }
     }
-    private boolean isWhiteSpace(String input){
-        for(int i = 0; i < input.length(); i++){
+
+    /**
+     * Checks if input is a newline, tab, or space.
+     *
+     * @param input is input strean given by user
+     * @return true if input is a Whitespace, otherwise return false
+     */
+    private boolean isWhiteSpace(String input) {
+        for (int i = 0; i < input.length(); i++) {
             char c = input.charAt(i);
             if(c != ' ' && c != '\n' && c != '\r' && c != '\t')  return false;
         }
         return true;
     }
+
     /**
      * Given input, calls respective methods and checks for invalid commands.
      *
@@ -65,7 +72,7 @@ public class CollectionManager {
         } else if (input.compareTo("PG") == 0) { // print by genre
             return checkPrintByGenre(list);
         } else {
-            System.out.println("Invalid command! 1");
+            System.out.println("Invalid command!");
             return -1; // continue
         }
     }
@@ -87,10 +94,10 @@ public class CollectionManager {
             } else if (method.compareTo("R") == 0) {// return album
                 returnCheck(token, list);
             } else {
-                System.out.println("Invalid command! 4");
+                System.out.println("Invalid command!");
             }
         } else {
-            System.out.println("Invalid command! 3");
+            System.out.println("Invalid command!");
         }
     }
 
@@ -107,23 +114,6 @@ public class CollectionManager {
         }
         return false;// album is not in collection
     }
-    //            if (list2.countTokens() > addOutOfBound || list2.countTokens() < addLessThanMax) {
-//                System.out.println("Invalid Date!");
-//                return;
-//            }
-
-//            int dateList[] = new int[3];
-//            int i = 0;
-//            while (i < dateList.length) { // checks if fields are integers
-//                try {
-//                    dateList[i] = Integer.parseInt(list2.nextToken());
-//                    i++;
-//                } catch (NumberFormatException e) {
-//                    System.out.println("Invalid Date!");
-//                    break;
-//                }
-//            }
-//            if (i != dateList.length) return; // caught exception
 
     /**
      * Checks if album exists in collection, otherwise adds album to Collection
@@ -217,11 +207,10 @@ public class CollectionManager {
     /**
      * Checks if collection isn't empty and prints albums.
      *
-     * @param list  is the Collection obj which refers to Album []
+     * @param list is the Collection obj which refers to Album []
      * @return -1 if empty collection, return 0 otherwise
      */
     private int checkPrint(Collection list) {
-        //TODO: never actually using "input" param here, do you need it?
         if (list.getAlbumNumber() > 0) {
             System.out.println("*List of albums in the collection.");
             list.print();
@@ -236,7 +225,7 @@ public class CollectionManager {
     /**
      * Checks if collection isn't empty and prints albums by genre.
      *
-     * @param list  is input given by user
+     * @param list is input given by user
      * @return -1 if empty collection, return 0 otherwise
      */
     private int checkPrintByGenre(Collection list) {
@@ -254,11 +243,10 @@ public class CollectionManager {
     /**
      * Checks if collection isn't empty and prints albums by release date.
      *
-     * @param list  is input given by user
+     * @param list is input given by user
      * @return -1 if empty collection, return 0 otherwise
      */
     private int checkPrintByDate(Collection list) {
-        //TODO: never actually using "input" param here, do you need it?
         if (list.getAlbumNumber() > 0) {
             System.out.println("*Album collection by the release dates.");
             list.printByReleaseDate();
