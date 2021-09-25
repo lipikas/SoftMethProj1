@@ -59,11 +59,11 @@ public class CollectionManager {
             System.out.println("Collection Manager terminated.");
             return 1; // break
         } else if (input.compareTo("P") == 0) { // print
-            return checkPrint(input, list);
+            return checkPrint(list);
         } else if (input.compareTo("PD") == 0) { // print by date
-            return checkPrintByDate(input, list);
+            return checkPrintByDate(list);
         } else if (input.compareTo("PG") == 0) { // print by genre
-            return checkPrintByGenre(input, list);
+            return checkPrintByGenre(list);
         } else {
             System.out.println("Invalid command! 1");
             return -1; // continue
@@ -85,7 +85,7 @@ public class CollectionManager {
             } else if (method.compareTo("L") == 0) {// lend method
                 lendCheck(token, list);
             } else if (method.compareTo("R") == 0) {// return album
-                lendCheck(token, list);
+                returnCheck(token, list);
             } else {
                 System.out.println("Invalid command! 4");
             }
@@ -138,7 +138,6 @@ public class CollectionManager {
         String genre = token.nextToken();
         String releaseDate = token.nextToken();
 
-        StringTokenizer list2 = new StringTokenizer(releaseDate, "/");
         Date date = new Date(releaseDate);
         if (!date.isValid()) {
             System.out.println("Invalid Date!");
@@ -217,11 +216,10 @@ public class CollectionManager {
     /**
      * Checks if collection isn't empty and prints albums.
      *
-     * @param input is input given by user
      * @param list  is the Collection obj which refers to Album []
      * @return -1 if empty collection, return 0 otherwise
      */
-    private int checkPrint(String input, Collection list) {
+    private int checkPrint(Collection list) {
         //TODO: never actually using "input" param here, do you need it?
         if (list.getAlbumNumber() > 0) {
             System.out.println("*List of albums in the collection.");
@@ -237,12 +235,10 @@ public class CollectionManager {
     /**
      * Checks if collection isn't empty and prints albums by genre.
      *
-     * @param input is input given by user
      * @param list  is input given by user
      * @return -1 if empty collection, return 0 otherwise
      */
-    private int checkPrintByGenre(String input, Collection list) {
-        //TODO: never actually using "input" param here, do you need it?
+    private int checkPrintByGenre(Collection list) {
         if (list.getAlbumNumber() > 0) {
             System.out.println("*Album collection by genre.");
             list.printByGenre();
@@ -257,11 +253,10 @@ public class CollectionManager {
     /**
      * Checks if collection isn't empty and prints albums by release date.
      *
-     * @param input is input given by user
      * @param list  is input given by user
      * @return -1 if empty collection, return 0 otherwise
      */
-    private int checkPrintByDate(String input, Collection list) {
+    private int checkPrintByDate(Collection list) {
         //TODO: never actually using "input" param here, do you need it?
         if (list.getAlbumNumber() > 0) {
             System.out.println("*Album collection by the release dates.");
