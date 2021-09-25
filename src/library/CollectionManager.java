@@ -44,9 +44,9 @@ public class CollectionManager {
     private boolean isWhiteSpace(String input){
         for(int i = 0; i < input.length(); i++){
             char c = input.charAt(i);
-            if(c == ' ' || c == '\n' || c == '\r' || c == '\t') return true;
+            if(c != ' ' && c != '\n' && c != '\r' && c != '\t')  return false;
         }
-        return false;
+        return true;
     }
     /**
      * Given input, calls respective methods and checks for invalid commands.
@@ -144,8 +144,9 @@ public class CollectionManager {
             return true;
         }// invalid date
         Album album = new Album(title, artist, genre, releaseDate);
-        if (!list.add(album)) System.out.println(album.toString() + " >> is already in the collection."); // adds album
-        else System.out.println(album.toString() + " >> added.");
+        String albumDetails = album.toString();
+        if (!list.add(album)) System.out.println(albumDetails + " >> is already in the collection."); // adds album
+        else System.out.println(albumDetails + " >> added.");
         return false;
     }
 
