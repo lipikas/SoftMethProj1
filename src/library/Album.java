@@ -78,6 +78,8 @@ public class Album {
 
     /**
      * Sets availability of album to true or false
+     *
+     * @param availability is boolean value to set isAvailable
      */
     public void setAvailability(boolean availability) {
         this.isAvailable = availability;

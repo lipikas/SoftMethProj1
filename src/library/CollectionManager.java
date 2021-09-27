@@ -59,6 +59,7 @@ public class CollectionManager {
      * Given input, calls respective methods and checks for invalid commands.
      *
      * @param input is args[0] in the input given by user.
+     * @param list is Collection object.
      * @return 1 if quit is called, -1 if Collection is empty or Invalid command occurs.
      */
     private int commandCheck(String input, Collection list) {
@@ -82,6 +83,7 @@ public class CollectionManager {
      *
      * @param method Refers to method name.
      * @param token  Input stream.
+     * @param list Collection object.
      */
     private void inputVerification(String method, StringTokenizer token, Collection list) {
         if (method.compareTo("A") == 0 && token.countTokens() == ADD_MAX_COUNT) { // add album
