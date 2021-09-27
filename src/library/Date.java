@@ -129,19 +129,44 @@ public class Date implements Comparable<Date> {
      * @param args Refers to arguments.
      */
     public static void main(String[] args) {
-        Date date = new Date("11/21/800");
-        //Test Case #1
-        if (!date.isValid()) System.out.println("Pass.");
+        Date date = new Date("11/21/800"); //Test Case #1
+        if (date.isValid()) System.out.println("Pass.");
         else System.out.println("Fail.");
 
-        //Test Case #2
-        Date date2 = new Date("2/29/2018");
-        if (!date2.isValid()) System.out.println("Pass.");
+        Date date2 = new Date("2/29/2018"); //Test Case #2
+        if (date2.isValid()) System.out.println("Pass.");
         else System.out.println("Fail.");
 
-        //Test Case #3
-        Date date3 = new Date("13/20/2018");
-        if (!date3.isValid()) System.out.println("Pass.");
+        Date date3 = new Date("13/20/2018"); //Test Case #3
+        if (date3.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        Date date4 = new Date("1/20/2018"); //Test Case #4
+        if (date4.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        Date date5 = new Date("1/20/2021"); //Test Case #5
+        if (date5.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        Date date6 = new Date("2/29/2000"); //Test Case #6
+        if (date6.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        Date date7 = new Date("2/55/2018"); //Test Case #7
+        if (date7.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        Date date8 = new Date("2/22/2018"); //Test Case #8
+        if (date8.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        Date date9 = new Date("4/30/2018"); //Test Case #9
+        if (date9.isValid()) System.out.println("Pass.");
+        else System.out.println("Fail.");
+
+        Date date10 = new Date("1/20/2018"); //Test Case #10
+        if (date10.isValid()) System.out.println("Pass.");
         else System.out.println("Fail.");
     }
 }
