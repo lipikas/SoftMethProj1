@@ -93,10 +93,10 @@ public class Date implements Comparable<Date> {
     }
 
     /**
-     * Compares dates if one date is >= or < the other date.
+     * Compares dates if one date is greater than or equal or less the other date.
      *
      * @param date - Date inputted by user.
-     * @return 1 if date1 > date 2, 0 if date 1 = date 2 and -1 if date 1 < date 2
+     * @return 1 if date1 is greater date 2, 0 if date 1 is equal to date 2 and -1 if date 1 less than date 2
      */
     @Override
     public int compareTo(Date date) {

@@ -57,7 +57,7 @@ public class Album {
     /**
      * Computes textual representation of Album object.
      *
-     * @return String representation: **<Title>::<Artist>::<Genre>::<Release Date>::is available.
+     * @return String representation of Album object.
      */
     @Override
     public String toString() {

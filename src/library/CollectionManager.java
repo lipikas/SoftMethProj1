@@ -15,7 +15,7 @@ public class CollectionManager {
     public static final int MAX_SIZE = 2;
 
     /**
-     * Given input, scans for method names and calls respective add, remove, lend, & etc methods for albums.
+     * Given input, scans for method names and calls respective add, remove, lend, and etc methods for albums.
      */
     public void run() {
         Scanner scan = new Scanner(System.in);
